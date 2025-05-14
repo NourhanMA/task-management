@@ -1,0 +1,58 @@
+<form action="" [formGroup]="addTaskForm" (ngSubmit)="addTask()">
+
+  <div class="row  mb-2">
+    <div class="flex flex-column  col-md-8">
+      <label class="form-label" for="taskName">Task Name <span class="text-danger">*</span></label>
+      <input id="taskName" formControlName="taskName" placeholder="Enter Task Name" pInputText class="w-100" />
+      <span *ngIf="addTaskForm.get('taskName')?.errors?.['required'] && addTaskForm.get('taskName')?.touched">Task name
+        is required</span>
+    </div>
+
+    <div class="d-flex flex-column  col-md-4">
+      <label class="form-label" for="urgency">Urgency <span class="text-danger">*</span></label>
+      <p-dropdown [options]="urgencyList" formControlName="urgency" optionLabel="name" placeholder="Select"
+        styleClass="w-100" /> <span
+        *ngIf="addTaskForm.get('urgency')?.errors?.['required'] && addTaskForm.get('urgency')?.touched">Urgency is
+        required</span>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column   mb-2">
+    <label class="form-label" for="description">Description</label>
+    <textarea rows="4" cols="30" pInputTextarea formControlName="description" class="form-control w-100"
+      styleClass="w-100" placeholder=" Describe task ">  </textarea>
+  </div>
+
+  <div class="d-flex gap-2 mb-2">
+    <div class="d-flex flex-column">
+      <label class="form-label" for="startDate">Start Date </label>
+      <p-calendar formControlName="startDate" [showIcon]="true" [placeholder]="'Select  date '"></p-calendar>
+    </div>
+
+    <div class="d-flex flex-column ">
+      <label class="form-label" for="endDate">End Date </label>
+      <p-calendar formControlName="endDate" [showIcon]="true" inputId="icondisplay" styleClass="w-100"
+        [placeholder]="'Select  date '" [showButtonBar]="true"></p-calendar>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column  mb-2">
+    <label class="form-label" for="assignedTo">Assigned To <span class="text-danger">*</span></label>
+    <div class="position-relative">
+      <i class="pi pi-user position-absolute icon"></i>
+      <input pInputText placeholder="assigned to" formControlName="assignedTo" class="w-100 ps-5" />
+    </div>
+  </div>
+
+  <p-divider />
+
+  <div class="d-flex justify-content-end gap-2">
+    <button class="btn border">Cancel</button>
+    <button class="btn border" type="submit" [disabled]="!addTaskForm.valid"> Create task
+      <i class="pi pi-chevron-right
+      "></i>
+    </button>
+  </div>
+
+
+</form>

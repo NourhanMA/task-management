@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+.icon {
+  top: 30%;
+  left: 25px;
+  color: #515662;
+}
+::ng-deep {
+  .p-inputtext,
+  .p-dropdown {
+    border-radius: 10px;
+  }
+}
+.p-dialog .p-dialog-header {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.p-dialog .p-dialog-content:last-of-type {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}

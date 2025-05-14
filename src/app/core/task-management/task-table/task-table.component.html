@@ -1,0 +1,39 @@
+<p-table [hidden]="isLoading" [value]="data" [paginator]="true" dataKey="id"
+  styleClass=" p-datatable-md datatable-break" [rows]="pageSize" [totalRecords]="totalRecords"
+  [showCurrentPageReport]="true" [lazy]="true" (onPage)="onPageChange($event)" [tableStyle]="{ 'min-width': '50rem' }"
+  [scrollable]="true" [resizableColumns]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+      <th pResizableColumn>Task Name</th>
+      <th pResizableColumn>Start Date</th>
+      <th pResizableColumn>Urgency</th>
+      <th pResizableColumn>Status</th>
+      <th pResizableColumn>Assigned to</th>
+      <th pResizableColumn>End Date</th>
+      <th pResizableColumn>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <td>
+        <p-tableCheckbox [value]="rowData" />
+      </td>
+      <td>{{ rowData.name }}</td>
+      <td>{{ rowData.startDate | date: 'medium'}} </td>
+      <td>{{ rowData.urgency }}</td>
+      <td>{{ rowData.status }} </td>
+      <td>{{ rowData.assignedTo }}</td>
+      <td>{{ rowData.endDate | date: 'medium'}} </td>
+      <td>
+        <div class="d-flex gap-2">
+          <i class="pi pi-eye"></i>
+          <i class="pi pi-ellipsis-h"></i>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

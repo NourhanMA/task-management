@@ -1,0 +1,23 @@
+<div class="container-fluid ">
+  <div class="d-flex justify-content-start my-3">
+    <h3>Tasks</h3>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6 row">
+      <div class="position-relative col-md-9">
+        <i class="pi pi-search position-absolute icon"></i>
+        <input pInputText placeholder="Search..." class="form-control ps-5" />
+      </div>
+
+      <button class="btn btn-light border col-md-3"> <i class="pi pi-filter"></i> Filter</button>
+
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-end gap-2">
+      <button class="btn btn-primary" (click)="createTask()"> <i class="pi pi-plus px-1 font-weight-bold"></i> Create task</button>
+      <button class="btn border"><i class="pi pi-ellipsis-h"></i></button>
+    </div>
+  </div>
+  <app-task-table></app-task-table>
+</div>

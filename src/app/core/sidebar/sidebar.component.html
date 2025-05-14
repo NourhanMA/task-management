@@ -1,0 +1,39 @@
+<aside [class.collapsed]="isCollapsed" class="sidebar">
+    <div class="d-flex justify-content-between pe-2" *ngIf="!isCollapsed">
+        <h4>Nabu</h4>
+        <div class="theme-icon border py-1 px-2 rounded d-flex align-items-center ">
+            <i class="pi pi-sun"></i>
+        </div>
+    </div>
+    <div class="" *ngIf="isCollapsed">
+        <i class="pi pi-sun"></i>
+    </div>
+    <p-divider />
+    <button class="toggle-btn" (click)="isCollapsed = !isCollapsed">
+        <i class="pi pi-angle-left"></i>
+    </button>
+    <ul>
+        <li *ngFor="let item of items">
+            <div class="menu-item d-flex justify-content-between " (click)="toggleExpand(item)">
+                <div class="d-flex gap-2 align-items-center">
+                    <!-- <img [src]="'assets/icons/' + item.icon" class="icon" /> -->
+                    <i class="pi" [class]="item.icon"> </i>
+                    <span *ngIf="!isCollapsed">{{ item.label }}</span>
+                </div>
+                <span *ngIf="item.items && !isCollapsed" class="arrow">
+                    <i class="pi " [ngClass]="[item.expanded ? 'pi-angle-up' : 'pi-angle-down']"></i>
+                </span>
+            </div>
+
+            <!-- Show children only if not collapsed and expanded -->
+            <ul *ngIf="item.items && item.expanded && !isCollapsed" class="submenu">
+                <li *ngFor="let child of item.items">
+                    <a [routerLink]="combineLink(item.link, child.link)" RouterLinkActive="active">
+                        {{ child.label }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</aside>
